@@ -8,3 +8,7 @@ jobs:
     steps:
     - name: Imprimir mensaje desde reusable-lab.yml
       run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
+
+    - name: Usar un secreto
+      run: echo "El secreto es ${{ secrets.MI_SECRETO }}"
+
