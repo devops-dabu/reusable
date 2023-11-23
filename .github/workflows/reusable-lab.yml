@@ -8,3 +8,15 @@ jobs:
     steps:
     - name: Imprimir mensaje desde reusable-lab.yml
       run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
+      
+    - name: Validar secret
+      env:
+          TITLE: ${{ secrets.GITHUB }}
+      run: |
+        if [[ "$TITLE" =~ ^crnic ]]; then
+        echo "Token Valido"
+        exit 0
+        else
+        echo "Token INvalido"
+        exit 1
+        fi
