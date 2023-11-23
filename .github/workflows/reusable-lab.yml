@@ -1,14 +1,19 @@
-name: Reusable Lab
+name: Reusable Workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      secret-token:
+        description: 'Secret token to be used in the workflow'
+        required: true
 
 jobs:
-  reusable-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Imprimir mensaje desde reusable-lab.yml
-      run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Hello World
+        run: echo "Hello from Reusable Workflow! Secret Token: ${{ inputs.secret-token }}"
