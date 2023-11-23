@@ -1,4 +1,4 @@
-name: Main Workflow
+name: Reusable Lab
 
 on:
   push:
@@ -6,23 +6,9 @@ on:
       - main
 
 jobs:
-  main-job:
+  reusable-job:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Imprimir mensaje desde main-workflow.yml
-      run: echo "Este es un mensaje desde el flujo de trabajo main-workflow.yml"
-
-    - name: Llamar al flujo de trabajo reusable
-      uses: ./.github/workflows/reusable-lab.yml
-
-  main-job-with-secret:
-    runs-on: ubuntu-latest
-    needs: main-job
-
-    steps:
-    - name: Imprimir mensaje secreto desde main-workflow.yml
-      run: echo "Mensaje secreto: ${{ secrets.MI_SECRETO }}"
-      env:
-        MI_SECRETO: ${{ secrets.MI_SECRETO }}
-
+    - name: Imprimir mensaje desde reusable-lab.yml
+      run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
