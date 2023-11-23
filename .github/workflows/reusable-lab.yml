@@ -1,10 +1,6 @@
 name: Reusable Lab
-
 on:
-  push:
-    branches:
-      - main
-
+  workflow_call:
 jobs:
   reusable-job:
     runs-on: ubuntu-latest
