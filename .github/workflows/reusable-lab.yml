@@ -1,19 +1,22 @@
-name: Reusable Workflow
+name: Reusable workflow example
 
 on:
   workflow_call:
     inputs:
-      secret-token:
-        description: 'Secret token to be used in the workflow'
+      required-secret:
+        description: 'A required secret'
         required: true
 
 jobs:
-  build:
+  example-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Use the secret
+        run: echo "The required secret is ${{ secrets.required_secret }}"
+
       - name: Hello World
-        run: echo "Hello from Reusable Workflow! Secret Token: ${{ inputs.secret-token }}"
+        run: echo "Hello, world!"
