@@ -1,6 +1,11 @@
 name: Reusable Lab
 on:
   workflow_call:
+    inputs:
+      secreto-entrada: # Define el nombre de la entrada para el secreto
+        description: 'Secreto de entrada'
+        required: true
+
 jobs:
   reusable-job:
     runs-on: ubuntu-latest
@@ -10,5 +15,4 @@ jobs:
       run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
 
     - name: Usar un secreto
-      run: echo "El secreto es ${{ secrets.MI_SECRETO }}"
-
+      run: echo "El secreto es ${{ inputs.secreto-entrada }}"
