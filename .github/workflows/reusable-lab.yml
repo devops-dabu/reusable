@@ -1,14 +1,14 @@
 name: Reusable Lab
 on:
   workflow_call:
+    secrets:
+      TITLE:
+        required: true
 jobs:
   reusable-job:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Imprimir mensaje desde reusable-lab.yml
-      run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
-      
     - name: Validar secret
       env:
           TITLE: ${{ secrets.TITLE }}
@@ -21,3 +21,5 @@ jobs:
         exit 1
         fi
         
+    - name: Imprimir mensaje desde reusable-lab.yml
+      run: echo "Este es un mensaje desde el flujo de trabajo reusable-lab.yml"
