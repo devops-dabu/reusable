@@ -11,7 +11,7 @@ jobs:
       
     - name: Validar secret
       env:
-          TITLE: ${{ inputs.GITHUB }}
+          TITLE: ${{ secrets.TITLE }}
       run: |
         if [[ "$TITLE" =~ ^crnic ]]; then
         echo "Token Valido"
