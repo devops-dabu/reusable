@@ -14,10 +14,7 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.config-path }}
+    
     - uses: actions/checkout@v3
     - name: Run a one-line script
       run: echo Hello, world!
